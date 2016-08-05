@@ -1,0 +1,7 @@
+function TT() {
+	this.say = function() {
+		console.log("in TT");
+	};
+};
+
+module.exports= TT;
