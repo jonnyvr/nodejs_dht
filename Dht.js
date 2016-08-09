@@ -58,9 +58,7 @@ class Dht {
 							
 						}
 					}
-					else if(msg.r.nodes) {
-						var tmp_id = msg.r.id.toString();
-						console.log(tmp_id);
+					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
 						console.log(nodes);
 					}
@@ -101,8 +99,9 @@ class Dht {
 	            y: 'q',
 	            q: 'find_node',
 	            a: {
-	                id,
-	                target: utils.randomId()
+	                id:id,
+	                //target: utils.randomId()
+	                target:id
 	            }
         	};
         
