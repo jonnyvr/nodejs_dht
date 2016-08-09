@@ -59,6 +59,8 @@ class Dht {
 						}
 					}
 					else if(msg.r.nodes) {
+						var tmp_id = msg.r.id.toString();
+						console.log(tmp_id);
 						var nodes = utils.decodeNodes(msg.r.nodes);
 						console.log(nodes);
 					}
