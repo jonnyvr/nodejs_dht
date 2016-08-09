@@ -1,8 +1,17 @@
 //require('express');
 
+
+//var NodesBucket = require("./NodesBucket");
+
+//var nodesBucket = new NodesBucket("bucket1", 3);
+//nodesBucket.test();
+
+
+
+
+//return;
+
 var Dht = require("./Dht");
-
-
 var dht = new Dht();
 dht.test();
 console.log("ddddddddd");

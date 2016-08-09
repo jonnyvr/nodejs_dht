@@ -46,9 +46,9 @@ class Dht {
 				t= msg.t.toString();
 			}
 			if(y != '' && t != '') {		
-				if(y == 'r') {
+				if(y == 'r') {					
 					if(msg.r.token) {
-			                	if(msg.r.values) {
+			            if(msg.r.values) {
 							
 						}
 						else if(msg.r.nodes) {
@@ -65,7 +65,6 @@ class Dht {
 					else {
 						
 					}
-					
 				}
 				else if(y == 'q' ) {
 					console.log(msg);
@@ -86,6 +85,10 @@ class Dht {
 	joinDht() {
 		const superNodes = config.superNodes;		
 		superNodes.forEach((v) => this.findNode(v));
+	}
+	
+	findNodes() {
+		
 	}
 	
 	findNode(target, nid) {
