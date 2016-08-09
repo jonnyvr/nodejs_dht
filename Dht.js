@@ -12,8 +12,8 @@ class Dht {
 		this.address = "182.92.99.15";
 		this.port = "8004";
 		this.id = utils.randomId();
-		console.log(this.id);
-		return ;
+		//console.log(this.id);
+		//return ;
 		this.socket = dgram.createSocket("udp4");
 		this.socket.on('error', (err)=>{
 			console.error("socket error:\n ");
