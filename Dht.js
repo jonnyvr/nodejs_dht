@@ -9,9 +9,11 @@ var utils = require("./utils");
 
 class Dht {
 	test() {
-		this.address = "127.0.0.1";
+		this.address = "182.92.99.15";
 		this.port = "8004";
 		this.id = utils.randomId();
+		console.log(this.id);
+		return ;
 		this.socket = dgram.createSocket("udp4");
 		this.socket.on('error', (err)=>{
 			console.error("socket error:\n ");
@@ -25,6 +27,54 @@ class Dht {
 	
 	onMessage(packet, rinfo) {
 		console.log("in onMessage");
+		var t="";
+		var y="";	
+		var msg=null;
+		
+		try {
+			msg = bencode.decode(packet);
+		}catch(ee) {
+			console.log("message err");
+			msg = null;
+		}
+		
+		if(msg != null) {
+			if(msg.y) {
+				y = msg.y.toString();
+			}
+			if(msg.t) {
+				t= msg.t.toString();
+			}
+			if(y != '' && t != '') {		
+				if(y == 'r') {
+					if(msg.r.token) {
+			                	if(msg.r.values) {
+							
+						}
+						else if(msg.r.nodes) {
+							
+						}
+						else {
+							
+						}
+					}
+					else if(msg.r.nodes) {
+						var nodes = utils.decodeNodes(msg.r.nodes);
+						console.log(nodes);
+					}
+					else {
+						
+					}
+					
+				}
+				else if(y == 'q' ) {
+					console.log(msg);
+				}
+				else {	
+					console.log(msg);
+				}
+			}
+		}
 	}
 	
 	start() {
@@ -40,27 +90,27 @@ class Dht {
 	
 	findNode(target, nid) {
         //生成离目标节点较近的id		
-        const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
-        const msg = {
-            t: crypto.randomBytes(2),
-            y: 'q',
-            q: 'find_node',
-            a: {
-                id,
-                target: utils.randomId()
-            }
-        };
+        	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
+        	const msg = {
+         	   t: crypto.randomBytes(2),
+	            y: 'q',
+	            q: 'find_node',
+	            a: {
+	                id,
+	                target: utils.randomId()
+	            }
+        	};
         
-        this.request(msg, target); 
+	        this.request(msg, target); 
 	}
 	
 	request(msg, target) {
 		console.log(msg);
-        const address = target.address;
-        const port = target.port;
-        const packet = bencode.encode(msg);
-        const len = packet.length;
-        this.socket.send(packet, 0, len, port, address);
+        	const address = target.address;
+	        const port = target.port;
+	        const packet = bencode.encode(msg);
+	        const len = packet.length;
+	        this.socket.send(packet, 0, len, port, address);
 	}
 	
 }
