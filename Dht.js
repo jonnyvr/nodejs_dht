@@ -81,16 +81,16 @@ class Dht {
 									}									
 								}
 								
-								console.log("node in"+tmp_is_in);
+//								console.log("node in"+tmp_is_in);
 								if(!tmp_is_in) {
 									data.push(tmp_node_new);
 								}
 							}							
 						}
 						else {
-							console.log("dddddddd");
+//							console.log("dddddddd");
 						}
-						console.log(data.length);
+						console.log(data);
 						
 					}
 					else {
