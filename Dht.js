@@ -64,6 +64,7 @@ class Dht {
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
 						console.log("node len"+nodes.length);
+						
 						if(nodes.lengh > 0) {
 							console.log("in for1");
 							for(var j=0; j < nodes.length; j++) {
@@ -85,6 +86,9 @@ class Dht {
 									data.push(tmp_node_new);
 								}
 							}							
+						}
+						else {
+							console.log("dddddddd");
 						}
 						console.log(data.length);
 						
