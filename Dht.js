@@ -63,6 +63,7 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
+						console.log("node len"+nodes.length);
 						if(nodes.lengh > 0) {
 							for(var j=0; j < nodes.length; j++) {
 								var tmp_node_new = nodes[j];
@@ -74,6 +75,8 @@ class Dht {
 										break;
 									}									
 								}
+								
+								console.log("node in"+tmp_is_in);
 								if(!tmp_is_in) {
 									data.push(tmp_node_new);
 								}
