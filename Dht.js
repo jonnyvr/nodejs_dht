@@ -68,6 +68,8 @@ class Dht {
 							for(var j=0; j < nodes.length; j++) {
 								var tmp_node_new = nodes[j];
 								var tmp_is_in = false;
+								
+								console.log("in for");
 								for(var i=0; i < data.length; i++) {
 									var tmp_node_old = data[i];
 									if(tmp_node_new.nid == tmp_node_id.nid) {
