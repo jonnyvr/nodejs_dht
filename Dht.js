@@ -7,9 +7,9 @@ var dgram = require("dgram");
 var config = require("./config");
 var utils = require("./utils");
 
+var data = [];
 class Dht {
-	test() {
-		this.nodes = [];
+	test() {		
 		this.address = "104.207.153.197";
 		this.port = "8004";
 		this.id = utils.randomId();
@@ -27,6 +27,10 @@ class Dht {
 	}
 	
 	onMessage(packet, rinfo) {
+		dd() {
+			
+		}
+		
 		console.log("in onMessage");
 		var t="";
 		var y="";	
@@ -61,8 +65,23 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
-						console.log(nodes);
-						insertRouter();
+						if(nodes.lengh > 0) {
+							for(var j=0; j < nodes.length; j++) {
+								var tmp_node_new = nodes[j];
+								var tmp_is_in = false;
+								for(var i=0; i < data.length; i++) {
+									var tmp_node_old = data[i];
+									if(tmp_node_new.nid == tmp_node_id.nid) {
+										tmp_is_in = true;
+										break;
+									}									
+								}
+								if(!tmp_is_in) {
+									data.push(tmp_node_new);
+								}
+							}							
+						}
+						
 					}
 					else {
 						console.log(msg);
