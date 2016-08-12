@@ -10,7 +10,7 @@ var utils = require("./utils");
 class Dht {
 	test() {
 		this.nodes = [];
-		this.address = "localhost";
+		this.address = "104.207.153.197";
 		this.port = "8004";
 		this.id = utils.randomId();
 		//console.log(this.id);
