@@ -25,6 +25,7 @@ class My_class {
 			i++;
 			data.push(i);
 			//console.log(data + tmp_param);
+			console.log(data.length > 0);
 			console.log(data.length);
 			console.log(data);
 			

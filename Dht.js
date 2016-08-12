@@ -65,7 +65,7 @@ class Dht {
 						var nodes = utils.decodeNodes(msg.r.nodes);
 						console.log("node len"+nodes.length);
 						
-						if(nodes.lengh > 0) {
+						if(nodes.length > 0) {
 							console.log("in for1");
 							for(var j=0; j < nodes.length; j++) {
 								console.log("in for2");
