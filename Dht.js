@@ -7,7 +7,7 @@ var dgram = require("dgram");
 var config = require("./config");
 var utils = require("./utils");
 
-var data = [];
+var data_router = [];
 
 class Dht {
 	test() {		
@@ -63,7 +63,7 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
-						console.log("node len"+nodes.length);
+//						console.log("node len"+nodes.length);
 						
 						if(nodes.length > 0) {
 //							console.log("in for1");
@@ -73,8 +73,8 @@ class Dht {
 								var tmp_is_in = false;
 								
 //								console.log("in for");
-								for(var i=0; i < data.length; i++) {
-									var tmp_node_old = data[i];
+								for(var i=0; i < data_router.length; i++) {
+									var tmp_node_old = data_router[i];
 									if(tmp_node_new.nid == tmp_node_old.nid) {
 										tmp_is_in = true;
 										break;
@@ -83,14 +83,14 @@ class Dht {
 								
 //								console.log("node in"+tmp_is_in);
 								if(!tmp_is_in) {
-									data.push(tmp_node_new);
+									data_router.push(tmp_node_new);
 								}
 							}							
 						}
 						else {
 //							console.log("dddddddd");
 						}
-						console.log(data);
+//						console.log(data_router);
 						
 					}
 					else {
@@ -105,13 +105,14 @@ class Dht {
 				}
 			}
 		}
-	}
-	
+	}	
 	
 	
 	start() {
 		console.log("in start");
 		this.joinDht();
+		
+		
 		
 	}
 	
@@ -126,28 +127,28 @@ class Dht {
 	
 	findNode(target, nid) {
         //生成离目标节点较近的id		
-        	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
-        	const msg = {
-         	   t: crypto.randomBytes(2),
-	            y: 'q',
-	            q: 'find_node',
-	            a: {
-	                id:id,
-	                //target: utils.randomId()
-	                target:id
-	            }
-        	};
-        
-	        this.request(msg, target); 
+    	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
+    	const msg = {
+     	   t: crypto.randomBytes(2),
+            y: 'q',
+            q: 'find_node',
+            a: {
+                id:id,
+                //target: utils.randomId()
+                target:id
+            }
+    	};
+    
+        this.request(msg, target); 
 	}
 	
 	request(msg, target) {
-		console.log(msg);
-        	const address = target.address;
-	        const port = target.port;
-	        const packet = bencode.encode(msg);
-	        const len = packet.length;
-	        this.socket.send(packet, 0, len, port, address);
+//		console.log(msg);
+    	const address = target.address;
+        const port = target.port;
+        const packet = bencode.encode(msg);
+        const len = packet.length;
+        this.socket.send(packet, 0, len, port, address);
 	}
 	
 }

@@ -8,6 +8,9 @@ var data = [];
 var i= 0;
 
 data.push("www");
+
+var _self = null; 
+
 class My_class {
 	
 	constructor() {
@@ -20,14 +23,14 @@ class My_class {
 	}
 	
 	test() {
+		_self = this;
+		
 		myevent.addListener('testevent', function(tmp_param) {
 			//console.log('on event'+data);
 			i++;
 			data.push(i);
 			//console.log(data + tmp_param);
-			console.log(data.length > 0);
-			console.log(data.length);
-			console.log(data);
+			console.log(this);
 			
 			
 			var count = 10000000;
