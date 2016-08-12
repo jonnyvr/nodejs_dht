@@ -6,8 +6,9 @@
 //var nodesBucket = new NodesBucket("bucket1", 3);
 //nodesBucket.test();
 
-
-
+//var Testsok = require("./Testsok");
+//var testsok = new Testsok();
+//testsok.test();
 
 //return;
 
