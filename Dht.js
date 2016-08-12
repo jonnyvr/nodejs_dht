@@ -8,6 +8,7 @@ var config = require("./config");
 var utils = require("./utils");
 
 var data = [];
+
 class Dht {
 	test() {		
 		this.address = "104.207.153.197";
@@ -26,10 +27,7 @@ class Dht {
 		this.socket.bind(this.port, this.address);
 	}
 	
-	onMessage(packet, rinfo) {
-		dd() {
-			
-		}
+	onMessage(packet, rinfo) {		
 		
 		console.log("in onMessage");
 		var t="";
@@ -97,12 +95,7 @@ class Dht {
 		}
 	}
 	
-	insertRouter(data_arr) {
-		console.log(typeof(data_arr));
-		if(typeof(data_arr) == "array") {
-			
-		}
-	}
+	
 	
 	start() {
 		console.log("in start");
@@ -111,7 +104,7 @@ class Dht {
 	}
 	
 	joinDht() {
-		const superNodes = config.superNodes;		
+		var superNodes = config.superNodes;		
 		superNodes.forEach((v) => this.findNode(v));
 	}
 	
