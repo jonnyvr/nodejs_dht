@@ -62,9 +62,10 @@ class Dht {
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
 						console.log(nodes);
+						insertRouter();
 					}
 					else {
-						
+						console.log(msg);
 					}
 				}
 				else if(y == 'q' ) {
@@ -74,6 +75,13 @@ class Dht {
 					console.log(msg);
 				}
 			}
+		}
+	}
+	
+	insertRouter(data_arr) {
+		console.log(typeof(data_arr));
+		if(typeof(data_arr) == "array") {
+			
 		}
 	}
 	
