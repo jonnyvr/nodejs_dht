@@ -79,6 +79,7 @@ class Dht {
 								}
 							}							
 						}
+						console.log(data.length);
 						
 					}
 					else {
