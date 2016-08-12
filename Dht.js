@@ -66,16 +66,16 @@ class Dht {
 						console.log("node len"+nodes.length);
 						
 						if(nodes.length > 0) {
-							console.log("in for1");
+//							console.log("in for1");
 							for(var j=0; j < nodes.length; j++) {
-								console.log("in for2");
+//								console.log("in for2");
 								var tmp_node_new = nodes[j];
 								var tmp_is_in = false;
 								
-								console.log("in for");
+//								console.log("in for");
 								for(var i=0; i < data.length; i++) {
 									var tmp_node_old = data[i];
-									if(tmp_node_new.nid == tmp_node_id.nid) {
+									if(tmp_node_new.nid == tmp_node_old.nid) {
 										tmp_is_in = true;
 										break;
 									}									
