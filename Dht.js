@@ -28,7 +28,8 @@ class Dht {
 	}
 	
 	onMessage(packet, rinfo) {		
-		
+		console.log(packet);
+		console.log(rinfo);
 		console.log("in onMessage");
 		var t="";
 		var y="";	

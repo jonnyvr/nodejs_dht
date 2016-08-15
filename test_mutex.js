@@ -30,7 +30,7 @@ class My_class {
 			i++;
 			data.push(i);
 			//console.log(data + tmp_param);
-			console.log(this);
+			console.log(_self.test2());
 			
 			
 			var count = 10000000;
