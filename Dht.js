@@ -28,9 +28,8 @@ class Dht {
 		this.socket.bind(this.port, this.address);
 	}
 	
-	onMessage(packet, rinfo) {		
-		console.log(packet);
-		console.log(rinfo);
+	onMessage(packet, rinfo, _self) {		
+		console.log(_self);		
 		console.log("in onMessage");
 		var t="";
 		var y="";	
