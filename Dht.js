@@ -22,6 +22,7 @@ class Dht {
 			this.socket.close();
 		});
 		var _self = this;
+		console.log(_self);	
 		this.socket.on('message', (packet, rinfo, _self)=>this.onMessage(packet, rinfo, _self));
 		this.socket.once('listening', ()=>this.start());
 		
