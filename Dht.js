@@ -21,7 +21,8 @@ class Dht {
 			console.error("socket error:\n ");
 			this.socket.close();
 		});
-		this.socket.on('message', (packet, rinfo)=>this.onMessage(packet, rinfo));
+		var _self = this;
+		this.socket.on('message', (packet, rinfo, _self)=>this.onMessage(packet, rinfo, _self));
 		this.socket.once('listening', ()=>this.start());
 		
 		this.socket.bind(this.port, this.address);
