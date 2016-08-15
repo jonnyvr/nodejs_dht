@@ -23,13 +23,15 @@ class Dht {
 		});
 		var _self = this;
 		console.log(_self);	
-		this.socket.on('message', (packet, rinfo, _self)=>this.onMessage(packet, rinfo, _self));
+		this.socket.on('message', function(packet) {
+			_self.onMessage(packet, _self);
+		});
 		this.socket.once('listening', ()=>this.start());
 		
 		this.socket.bind(this.port, this.address);
 	}
 	
-	onMessage(packet, rinfo, _self) {		
+	onMessage(packet, _self) {		
 		console.log(_self);		
 		console.log("in onMessage");
 		var t="";
