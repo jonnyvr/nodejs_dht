@@ -10,7 +10,8 @@ var utils = require("./utils");
 var data_router = [];
 
 class Dht {
-	test() {		
+	test() {
+		var _self = this;
 		this.address = "104.207.153.197";
 		this.port = "8004";
 		this.id = utils.randomId();
@@ -21,18 +22,18 @@ class Dht {
 			console.error("socket error:\n ");
 			this.socket.close();
 		});
-		var _self = this;
-		console.log(_self);	
+		
 		this.socket.on('message', function(packet) {
 			_self.onMessage(packet, _self);
 		});
 		this.socket.once('listening', ()=>this.start());
 		
 		this.socket.bind(this.port, this.address);
+		
+		this.findNodes(_self);
 	}
 	
 	onMessage(packet, _self) {		
-		console.log(_self);		
 		console.log("in onMessage");
 		var t="";
 		var y="";	
@@ -67,34 +68,8 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
-//						console.log("node len"+nodes.length);
-						
-						if(nodes.length > 0) {
-//							console.log("in for1");
-							for(var j=0; j < nodes.length; j++) {
-//								console.log("in for2");
-								var tmp_node_new = nodes[j];
-								var tmp_is_in = false;
-								
-//								console.log("in for");
-								for(var i=0; i < data_router.length; i++) {
-									var tmp_node_old = data_router[i];
-									if(tmp_node_new.nid == tmp_node_old.nid) {
-										tmp_is_in = true;
-										break;
-									}									
-								}
-								
-//								console.log("node in"+tmp_is_in);
-								if(!tmp_is_in) {
-									data_router.push(tmp_node_new);
-								}
-							}							
-						}
-						else {
-//							console.log("dddddddd");
-						}
-//						console.log(data_router);
+//						console.log("node len"+nodes.length);						
+						_self.insertNode(nodes);
 						
 					}
 					else {
@@ -111,6 +86,34 @@ class Dht {
 		}
 	}	
 	
+	insertNode(nodes) {
+		if(nodes.length > 0) {
+			console.log("in for1");
+			for(var j=0; j < nodes.length; j++) {
+				console.log("in for2");
+				var tmp_node_new = nodes[j];
+				var tmp_is_in = false;
+				
+				console.log("in for");
+				for(var i=0; i < data_router.length; i++) {
+					var tmp_node_old = data_router[i];
+					if(tmp_node_new.nid == tmp_node_old.nid) {
+						tmp_is_in = true;
+						break;
+					}									
+				}
+				
+				console.log("node in"+tmp_is_in);
+				if(!tmp_is_in) {
+					data_router.push(tmp_node_new);
+				}
+			}							
+		}
+		else {
+			console.log("dddddddd");
+		}
+		console.log(data_router);
+	}
 	
 	start() {
 		console.log("in start");
@@ -125,8 +128,15 @@ class Dht {
 		superNodes.forEach((v) => this.findNode(v));
 	}
 	
-	findNodes() {
-		
+	findNodes(_self) {
+		setInterval(function() {
+			if(data_router.length > 0) {
+				var node = data_router.pop();
+				if(node != null && node.nid != undefined) {
+					findNode(node.nid, _self.id);
+				}
+			}
+		}, 100);
 	}
 	
 	findNode(target, nid) {
