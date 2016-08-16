@@ -27,8 +27,8 @@ class Dht {
 			this.socket.close();
 		});
 		
-		this.socket.on('message', function(packet) {
-			_self.onMessage(packet, _self);
+		this.socket.on('message', function(packet, rinfo) {
+			_self.onMessage(packet, rinfo, _self);
 		});
 		this.socket.once('listening', ()=>this.start());
 		
@@ -37,7 +37,7 @@ class Dht {
 		this.findNodes(_self);
 	}
 	
-	onMessage(packet, _self) {		
+	onMessage(packet, rinfo, _self) {		
 		console.log("in onMessage");
 		var t="";
 		var y="";	
@@ -81,6 +81,23 @@ class Dht {
 					}
 				}
 				else if(y == 'q' ) {
+					var q = msg.q.toString();					
+					switch(q) {
+					case 'ping':
+						_self.toPing(msg, rinfo);
+						break;
+					case 'find_node':
+						_self.toFindNode(msg, rinfo);
+						break;
+					case 'get_peers':
+						_self.toGetPeer(msg, rinfo);
+						break;
+					case 'annouce_peer':
+						_self.toAnnouncePeer(msg, rinfo);
+						break;					
+					default:
+//						console.log(msg);
+					}
 					console.log(msg);
 				}
 				else {	
@@ -111,9 +128,6 @@ class Dht {
 	start() {
 		console.log("in start");
 		this.joinDht();
-		
-		
-		
 	}
 	
 	joinDht() {
@@ -137,8 +151,6 @@ class Dht {
 	}
 	
 	findNode(target, nid) {
-		
-		
         //生成离目标节点较近的id		
     	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
     	const msg = {
@@ -155,12 +167,74 @@ class Dht {
         this.request(msg, target); 
 	}
 	
+	
+	toPing(msg, rinfo) {
+		const r = {
+	            id: this.id
+	        };    
+		this.response(r, msg.t, rinfo);
+	}
+	
+	toFindNode(msg, rinfo) {		
+		var tmp_nodes_near = this.data_router.getNearNodes(this.id);
+		tmp_nodes_near = bencode.decode(tmp_nodes_near);
+		const r = {
+	            id: this.id,
+	            nodes:tmp_nodes_near
+	        };    
+		this.response(r, msg.t, rinfo);
+	}
+	
+	toGetPeer(msg, rinfo) {
+		//ADD TO DB
+		var info_hash = msg.a.info_hash;
+		if(info_hash && info_hash.length == 20) {
+			//add to db
+			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
+			tmp_nodes_near = bencode.decode(tmp_nodes_near);
+			const r = {
+		            id: this.id,
+		            token: crypto.randomBytes(4),
+		            nodes: tmp_nodes_near
+		        };
+			this.response(r, msg.t, rinfo);
+		}		
+	}
+	
+	toAnnouncePeer(msg, rinfo) {
+		//ADD TO DB
+		
+		 const r = {
+		            id: this.id
+		        };
+
+		this.response(r, msg.t, rinfo);
+	}
+		
+	
 	request(msg, target) {
 //		console.log(msg);
     	const address = target.address;
         const port = target.port;
         const packet = bencode.encode(msg);
         const len = packet.length;
+        this.socket.send(packet, 0, len, port, address);
+	}
+	
+	 response(r, t, rinfo) {
+        const packet = bencode.encode({
+            t,
+            r,
+            y: 'r'
+        });
+        const len = packet.length;
+        const address = rinfo.address;
+        const port = rinfo.port;
+        if (port < 1 || port > 65535) {
+            console.log('port is invalid');
+            return ;
+        }
+
         this.socket.send(packet, 0, len, port, address);
 	}
 	

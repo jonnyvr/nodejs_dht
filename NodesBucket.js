@@ -27,7 +27,17 @@ class NodesBucket {
 	}
 	
 	showData() {
-		console.log(this._data.values());
+//		console.log(this._data.values());
+		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<");
+		var tmp_count = this._data.count();
+		console.log(tmp_count );
+		var tmp_ vs = this._data.values();
+		
+		for(var i=0; i< tmp_vs.length; i++) {
+			tmp_count += tmp_vs[i].length;
+		}
+		console.log(tmp_count );
+		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
 	
 	calDis(srcNode, targetNode) {
@@ -72,7 +82,28 @@ class NodesBucket {
 		return tmp_dis_rtn;
 	}
 	
-		
+	
+	getNearNodes(targetNodeId) {
+		var tmp_nodes_rtn = [];
+		if(targetNodeId != null && targetNodeId != undefined) {
+			var tmp_target_node_unit = new NodeUnit(targetNodeId);
+			var tmp_dis = this.calDis(this._selfNode, tmp_target_node_unit);
+			if(this._data.has(tmp_dis)) {
+				var tmp_units = this._data.get(tmp_dis);
+				if(tmp_units != null && tmp_units.length > 0) {
+					for(var i=tmp_units.length-1; i >= 0; i++ ) {
+						var tmp_node_unit =tmp_units[i];
+						if(tmp_node_unit._node != undefined && tmp_node_unit._node != null) {
+							tmp_nodes_rtn.push(tmp_node_unit._node);
+						}
+					}
+				}
+			}	
+		}
+		return tmp_nodes_rtn;
+	}
+	
+	
 	insertNewNode(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
