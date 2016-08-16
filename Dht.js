@@ -7,7 +7,7 @@ var dgram = require("dgram");
 var config = require("./config");
 var utils = require("./utils");
 var NodesBucket = require("./NodesBucket");
-
+var NodeUnit = require("./NodeUnit");
 
 
 class Dht {	
