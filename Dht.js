@@ -127,7 +127,7 @@ class Dht {
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
-					findNode(tmp_node.nid, _self.id);
+					_self.findNode(tmp_node.nid, _self.id);
 				}	
 			}
 						
