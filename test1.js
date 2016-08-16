@@ -1,16 +1,16 @@
 //require('express');
 
 
-var NodesBucket = require("./NodesBucket");
-
-var nodesBucket = new NodesBucket("bucket1", 3);
-nodesBucket.test();
-
-//var Testsok = require("./Testsok");
-//var testsok = new Testsok();
-//testsok.test();
-
-return;
+//var NodesBucket = require("./NodesBucket");
+//
+//var nodesBucket = new NodesBucket("bucket1", 3);
+//nodesBucket.test();
+//
+////var Testsok = require("./Testsok");
+////var testsok = new Testsok();
+////testsok.test();
+//
+//return;
 
 var Dht = require("./Dht");
 var dht = new Dht();
