@@ -124,7 +124,7 @@ class Dht {
 	findNodes(_self) {
 		setInterval(function() {			
 			var tmp_node_unit = _self.data_router.getNodeToReq();
-			console.log(_self.data_router);
+			console.log(_self.data_router._data);
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
