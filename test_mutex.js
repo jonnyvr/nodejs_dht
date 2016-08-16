@@ -116,6 +116,3 @@ class My_class {
 
 var myclass = new My_class();
 myclass.test();
-
-
-

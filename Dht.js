@@ -6,15 +6,19 @@ var dgram = require("dgram");
 
 var config = require("./config");
 var utils = require("./utils");
+var NodesBucket = require("./NodesBucket");
 
-var data_router = [];
 
-class Dht {
-	test() {
-		var _self = this;
+
+class Dht {	
+	test() {		
+		var _self = this;		
 		this.address = "104.207.153.197";
 		this.port = "8004";
 		this.id = utils.randomId();
+		this.selfNode = new NodeUnit(this.id);
+		this.data_router = new NodesBucket(this.selfNode);
+		
 		//console.log(this.id);
 		//return ;
 		this.socket = dgram.createSocket("udp4");
@@ -88,31 +92,20 @@ class Dht {
 	
 	insertNode(nodes) {
 		if(nodes.length > 0) {
-			console.log("in for1");
+//			console.log("in for1");
 			for(var j=0; j < nodes.length; j++) {
-				console.log("in for2");
+//				console.log("in for2");
 				var tmp_node_new = nodes[j];
-				var tmp_is_in = false;
 				
-				console.log("in for");
-				for(var i=0; i < data_router.length; i++) {
-					var tmp_node_old = data_router[i];
-					if(tmp_node_new.nid == tmp_node_old.nid) {
-						tmp_is_in = true;
-						break;
-					}									
-				}
-				
-				console.log("node in"+tmp_is_in);
-				if(!tmp_is_in) {
-					data_router.push(tmp_node_new);
-				}
+				var tmp_node_unit = new NodeUnit();
+				tmp_node_unit.setNode(tmp_node_new);
+				data_router.insertNewNode(tmp_node_unit);				
 			}							
 		}
 		else {
 			console.log("dddddddd");
 		}
-		console.log(data_router);
+//		console.log(data_router);
 	}
 	
 	start() {
@@ -129,13 +122,15 @@ class Dht {
 	}
 	
 	findNodes(_self) {
-		setInterval(function() {
-			if(data_router.length > 0) {
-				var node = data_router.pop();
-				if(node != null && node.nid != undefined) {
-					findNode(node.nid, _self.id);
-				}
+		setInterval(function() {			
+			var tmp_node_unit = data_router.getNodeToReq();
+			if(tmp_node_unit != null) {
+				var tmp_node = tmp_node_unit.getNode();
+				if(tmp_node != null && tmp_node.nid != undefined) {
+					findNode(tmp_node.nid, _self.id);
+				}	
 			}
+						
 		}, 100);
 	}
 	
