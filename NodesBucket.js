@@ -26,6 +26,10 @@ class NodesBucket {
 		}
 	}
 	
+	showData() {
+		console.log(this._data.values());
+	}
+	
 	calDis(srcNode, targetNode) {
 		var tmp_dis_rtn = -1;
 		
