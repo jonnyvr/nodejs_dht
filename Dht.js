@@ -99,7 +99,7 @@ class Dht {
 				
 				var tmp_node_unit = new NodeUnit();
 				tmp_node_unit.setNode(tmp_node_new);
-				data_router.insertNewNode(tmp_node_unit);				
+				this.data_router.insertNewNode(tmp_node_unit);				
 			}							
 		}
 		else {
