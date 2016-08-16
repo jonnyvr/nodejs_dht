@@ -31,7 +31,7 @@ class NodesBucket {
 		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<");
 		var tmp_count = this._data.count();
 		console.log(tmp_count );
-		var tmp_ vs = this._data.values();
+		var tmp_vs = this._data.values();
 		
 		for(var i=0; i< tmp_vs.length; i++) {
 			tmp_count += tmp_vs[i].length;
