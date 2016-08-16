@@ -127,7 +127,7 @@ class Dht {
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
-					_self.findNode(tmp_node.nid, _self.id);
+					//_self.findNode(tmp_node.nid, _self.id);
 				}	
 			}
 						
@@ -135,6 +135,8 @@ class Dht {
 	}
 	
 	findNode(target, nid) {
+		
+		
         //生成离目标节点较近的id		
     	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
     	const msg = {
