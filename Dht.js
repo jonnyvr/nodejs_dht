@@ -164,7 +164,12 @@ class Dht {
 	
 	findNode(target, nid) {
         //生成离目标节点较近的id		
-    	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
+//    	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
+		const id = nid;
+		if(id == undefined) {
+			id = this.id;
+		}
+		
     	const msg = {
      	   t: crypto.randomBytes(2),
             y: 'q',
@@ -176,7 +181,11 @@ class Dht {
             }
     	};
     	
+    	console.log("<<<<<<<<<<<<<");
+    	console.log(target);
+    	console.log(nid);
     	console.log(msg);
+    	console.log(">>>>>>>>>>>>>");
         this.request(msg, target); 
 	}
 	
