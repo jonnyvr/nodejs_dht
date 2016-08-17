@@ -37,6 +37,7 @@ class NodesBucket {
 			tmp_count += tmp_vs[i].length;
 		}
 		console.log(tmp_count );
+		console.log(this._data);
 //		console.log(tmp_vs);
 		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
@@ -55,7 +56,7 @@ class NodesBucket {
 					tmp_dis += tmp_dis_arr[i] * Math.pow(2, (19-i)*8);
 				}
 				
-				console.log(this._data);
+//				console.log(this._data);
 //				console.log(this._bucketIndex);
 //				console.log(srcNode._nodeId);
 //				console.log(targetNode._nodeId);
