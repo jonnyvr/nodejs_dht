@@ -57,11 +57,11 @@ class NodesBucket {
 				
 				console.log(this._data);
 //				console.log(this._bucketIndex);
-				console.log(srcNode._nodeId);
-				console.log(targetNode._nodeId);
+//				console.log(srcNode._nodeId);
+//				console.log(targetNode._nodeId);
 //				console.log(tmp_dis_arr);
 				
-				console.log("tmp_dis"+tmp_dis+ "_");
+//				console.log("tmp_dis"+tmp_dis+ "_");
 				
 				for(var i=0; i < this._bucketIndex.length; i ++) {
 					var tmp_find = false;
