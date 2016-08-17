@@ -172,7 +172,8 @@ class Dht {
                 target:id
             }
     	};
-    
+    	
+    	console.log(msg);
         this.request(msg, target); 
 	}
 	
@@ -244,7 +245,7 @@ class Dht {
             return ;
         }
 
-        console.log(r);
+        
         this.socket.send(packet, 0, len, port, address);
 	}
 	
