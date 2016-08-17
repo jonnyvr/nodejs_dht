@@ -148,7 +148,7 @@ class Dht {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
 			var tmp_node_unit = _self.data_router.getNodeToReq();
-//			_self.data_router.showData();
+			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
