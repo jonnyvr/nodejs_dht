@@ -185,11 +185,11 @@ class Dht {
             }
     	};
     	
-    	console.log("<<<<<<<<<<<<<");
-    	console.log(target);
-    	console.log(nid);
-    	console.log(msg);
-    	console.log(">>>>>>>>>>>>>");
+//    	console.log("<<<<<<<<<<<<<");
+//    	console.log(target);
+//    	console.log(nid);
+//    	console.log(msg);
+//    	console.log(">>>>>>>>>>>>>");
         this.request(msg, target); 
 	}
 	
