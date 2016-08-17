@@ -79,7 +79,7 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
-//						console.log("node len"+nodes.length);						
+						console.log("nodeS len"+nodes.length);						
 						_self.insertNode(nodes);
 						
 					}
