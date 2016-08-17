@@ -44,45 +44,52 @@ class NodesBucket {
 	calDis(srcNode, targetNode) {
 		var tmp_dis_rtn = -1;
 		
-		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {			
-			var tmp_dis = targetNode._nodeId ^ srcNode._nodeId;
-			console.log(srcNode._nodeId.length);
-//			console.log(targetNode._nodeId.toString());
-			console.log(srcNode._nodeId);
-			console.log(targetNode._nodeId);
-			
-			console.log("tmp_dis"+tmp_dis+ "_");
-			
-			for(var i=0; i < this._bucketIndex.length; i ++) {
-				var tmp_find = false;
-				if(i == 0) {
-					if(tmp_dis < this._bucketIndex[i]) {
-						tmp_dis_rtn = i;
-						tmp_find= true;						
-					}
+		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {
+			if(targetNode._nodeId.length != undefined && srcNode._nodeId.length != undefined && srcNode._nodeId.length == 20) {
+				var tmp_dis_arr = [];
+				for(var i=0; i < 20; i++) {
+					tmp_dis_arr.push(targetNode._nodeId[i] ^ srcNode._nodeId[i]);
 				}
 				
-				if(!tmp_find) {
-					if(i == (this._bucketIndex.length-1)) {
-						if(tmp_dis > this._bucketIndex[i]) {
+				var tmp_dis = targetNode._nodeId ^ srcNode._nodeId;
+				
+//				console.log(targetNode._nodeId.toString());
+				console.log(srcNode._nodeId);
+				console.log(targetNode._nodeId);
+				console.log(tmp_dis_arr);
+				
+				console.log("tmp_dis"+tmp_dis+ "_");
+				
+				for(var i=0; i < this._bucketIndex.length; i ++) {
+					var tmp_find = false;
+					if(i == 0) {
+						if(tmp_dis < this._bucketIndex[i]) {
 							tmp_dis_rtn = i;
 							tmp_find= true;						
 						}
 					}
+					
+					if(!tmp_find) {
+						if(i == (this._bucketIndex.length-1)) {
+							if(tmp_dis > this._bucketIndex[i]) {
+								tmp_dis_rtn = i;
+								tmp_find= true;						
+							}
+						}
+					}
+					
+					if(!tmp_find) {
+						if(tmp_dis >= this._bucketIndex[i] && tmp_dis < this._bucketIndex[i+1]) {
+							tmp_dis_rtn = i;
+							tmp_find= true;
+						}										
+					}
+					
+					if(tmp_find) {
+						break;
+					}
 				}
-				
-				if(!tmp_find) {
-					if(tmp_dis >= this._bucketIndex[i] && tmp_dis < this._bucketIndex[i+1]) {
-						tmp_dis_rtn = i;
-						tmp_find= true;
-					}										
-				}
-				
-				if(tmp_find) {
-					break;
-				}
-			}
-				
+			}	
 		}
 		return tmp_dis_rtn;
 	}
@@ -203,7 +210,8 @@ class NodesBucket {
 		var tmp_var = 0x01;
 		this._selfNode = new NodeUnit();
 //		this._selfNode._nodeId = 0xd54033cd939d192a75ed7bc99e3dc1d0436e1dfa;
-		this._selfNode._nodeId = 0xd54033cd;
+//		this._selfNode._nodeId = 0xd54033cd;
+		this._selfNode._nodeId = [0xd5, 0x40, 0x33, 0x11];
 		
 //		console.log(this._bucketIndex);
 		
@@ -218,7 +226,10 @@ class NodesBucket {
 		
 		var tmp_node3 = new NodeUnit();
 //		tmp_node3._nodeId = 0x07f29b9630707160328b053b1aa772e779a4714b;
-		tmp_node3._nodeId = 0x07f29b96;
+//		tmp_node3._nodeId = 0x07f29b96;
+		tmp_node3._nodeId = [0x07, 0xf2, 0x33, 0x11];
+		
+		
 		
 //		this.insertNewNode(tmp_node);
 //		this.insertNewNode(tmp_node1);
