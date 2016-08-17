@@ -52,10 +52,10 @@ class Dht {
 			msg = null;
 		}
 		
-		console.log("[[[[[[[[[[[[[[[[");
-		console.log(msg);
-		console.log(rinfo);
-		console.log("]]]]]]]]]]]]]]]]");
+//		console.log("[[[[[[[[[[[[[[[[");
+//		console.log(msg);
+//		console.log(rinfo);
+//		console.log("]]]]]]]]]]]]]]]]");
 		
 		if(msg != null) {
 			if(msg.y) {
@@ -129,8 +129,7 @@ class Dht {
 		else {
 			console.log("dddddddd");
 		}
-		console.log("inserthahah");
-		this.data_router.showData();
+		console.log("inserthahah");		
 	}
 	
 	start(_self) {
@@ -149,7 +148,7 @@ class Dht {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
 			var tmp_node_unit = _self.data_router.getNodeToReq();
-			_self.data_router.showData();
+//			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {

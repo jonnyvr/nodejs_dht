@@ -9,12 +9,13 @@ class NodesBucket {
 		this._selfNode = selfNode;
 		this._bucketIndex = [];		
 		
+		var tmp_N = 20;
 		if(typeof(N) != 'number') {
-			this._N = 8;
+			this._N = tmp_N;
 		}
 		else {
-			if(N > 8 || N <= 0) {
-				N = 8;
+			if(N > tmp_N || N <= 0) {
+				N = tmp_N;
 			}
 			this._N = N;
 		}
