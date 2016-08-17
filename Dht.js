@@ -30,7 +30,9 @@ class Dht {
 		this.socket.on('message', function(packet, rinfo) {
 			_self.onMessage(packet, rinfo, _self);
 		});
-		this.socket.once('listening', ()=>this.start(this._self));
+		this.socket.once('listening', function() {
+			this.start(_self);
+		});
 		
 		this.socket.bind(this.port, this.address);
 		
