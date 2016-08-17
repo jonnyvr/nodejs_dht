@@ -94,7 +94,7 @@ class NodesBucket {
 				if(tmp_units != null && tmp_units.length > 0) {
 					for(var i=tmp_units.length-1; i >= 0; i++ ) {
 						var tmp_node_unit =tmp_units[i];
-						if(tmp_node_unit._node != undefined && tmp_node_unit._node != null) {
+						if(tmp_node_unit != null && tmp_node_unit != undefined  && tmp_node_unit._node != null && tmp_node_unit._node != undefined) {
 							tmp_nodes_rtn.push(tmp_node_unit._node);
 						}
 					}
