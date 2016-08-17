@@ -50,7 +50,7 @@ class NodesBucket {
 				for(var i=0; i < 20; i++) {
 					tmp_dis_arr.push(targetNode._nodeId[i] ^ srcNode._nodeId[i]);
 				}
-				var tmp_dis = 0;
+				var tmp_dis = 0.0;
 				for(var i=0; i < 20; i++) {
 					tmp_dis += tmp_dis_arr[i]<<(8*(19-i));
 				}
