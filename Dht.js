@@ -138,7 +138,7 @@ class Dht {
 	joinDht(_self) {
 		var superNodes = config.superNodes;
 		for(var i=0; i < superNodes.length; i++) {
-			this.findNode(v, _self.id);
+			this.findNode(superNodes[i], _self.id);
 		}		
 	}
 	
