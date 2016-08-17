@@ -49,6 +49,7 @@ class NodesBucket {
 			
 //			console.log(targetNode._nodeId.toString());
 			console.log(srcNode._nodeId);
+			console.log(targetNode._nodeId);
 			
 			console.log("tmp_dis"+tmp_dis+ "_");
 			
