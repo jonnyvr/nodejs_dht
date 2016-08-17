@@ -46,7 +46,7 @@ class NodesBucket {
 		
 		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {			
 			var tmp_dis = targetNode._nodeId ^ srcNode._nodeId;
-			console.log(srcNode.length);
+			console.log(srcNode._nodeId.length);
 //			console.log(targetNode._nodeId.toString());
 			console.log(srcNode._nodeId);
 			console.log(targetNode._nodeId);
