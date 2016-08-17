@@ -153,7 +153,7 @@ class Dht {
 			}
 			
 			
-			if(tmp_count > 0) {
+			if(tmp_count > 1) {
 				clearInterval(tmp_handle_check);
 			}
 		}, 10000);
