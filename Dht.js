@@ -50,6 +50,7 @@ class Dht {
 			msg = null;
 		}
 		
+		console.log(msg);
 		
 		if(msg != null) {
 			if(msg.y) {
@@ -150,7 +151,7 @@ class Dht {
 			}
 			
 			tmp_count ++;
-			if(tmp_count > 1) {
+			if(tmp_count > 0) {
 				clearInterval(tmp_handle_check);
 			}
 		}, 10000);
