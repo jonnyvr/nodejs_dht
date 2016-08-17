@@ -55,7 +55,7 @@ class NodesBucket {
 					tmp_dis += tmp_dis_arr[i]<<(8*(19-i));
 				}
 				
-				console.log(this._data);
+				console.log(this._bucketIndex);
 				console.log(srcNode._nodeId);
 				console.log(targetNode._nodeId);
 //				console.log(tmp_dis_arr);
