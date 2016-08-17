@@ -30,7 +30,7 @@ class Dht {
 		this.socket.on('message', function(packet, rinfo) {
 			_self.onMessage(packet, rinfo, _self);
 		});
-		this.socket.once('listening', ()=>this.start());
+		this.socket.once('listening', ()=>this.start(this._self));
 		
 		this.socket.bind(this.port, this.address);
 		
@@ -130,14 +130,16 @@ class Dht {
 //		console.log(data_router);
 	}
 	
-	start() {
+	start(_self) {
 		console.log("in start");
-		this.joinDht();
+		this.joinDht(_self);
 	}
 	
-	joinDht() {
-		var superNodes = config.superNodes;		
-		superNodes.forEach((v) => this.findNode(v));
+	joinDht(_self) {
+		var superNodes = config.superNodes;
+		for(var i=0; i < superNodes.length; i++) {
+			this.findNode(v, _self.id);
+		}		
 	}
 	
 	findNodes(_self) {
