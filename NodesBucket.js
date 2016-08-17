@@ -55,7 +55,7 @@ class NodesBucket {
 					tmp_dis += tmp_dis_arr[i] * Math.pow(2, (19-i)*8);
 				}
 				
-				console.log(this._bucketIndex);
+//				console.log(this._bucketIndex);
 				console.log(srcNode._nodeId);
 				console.log(targetNode._nodeId);
 //				console.log(tmp_dis_arr);
