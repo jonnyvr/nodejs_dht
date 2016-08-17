@@ -147,10 +147,12 @@ class Dht {
 				if(tmp_node != null && tmp_node.nid != undefined) {
 //					console.log(tmp_node);
 					_self.findNode(tmp_node, _self.id);
+					
+					tmp_count ++;
 				}	
 			}
 			
-			tmp_count ++;
+			
 			if(tmp_count > 0) {
 				clearInterval(tmp_handle_check);
 			}
