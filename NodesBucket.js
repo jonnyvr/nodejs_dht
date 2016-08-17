@@ -47,7 +47,7 @@ class NodesBucket {
 		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {			
 			var tmp_dis = targetNode._nodeId ^ srcNode._nodeId;
 			
-//			console.log("tmp_dis"+tmp_dis);
+			console.log("tmp_dis"+tmp_dis);
 			
 			for(var i=0; i < this._bucketIndex.length; i ++) {
 				var tmp_find = false;
@@ -108,7 +108,7 @@ class NodesBucket {
 	insertNewNode(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
-			console.log("tmp_dis: "+tmp_dis);
+//			console.log("tmp_dis: "+tmp_dis);
 			targetNode.refreshTime();
 			
 			if(!this._data.has(tmp_dis)) {
