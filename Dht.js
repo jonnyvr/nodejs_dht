@@ -129,7 +129,8 @@ class Dht {
 		else {
 			console.log("dddddddd");
 		}
-//		console.log(data_router);
+		console.log("inserthahah");
+		this.data_router.showData();
 	}
 	
 	start(_self) {
