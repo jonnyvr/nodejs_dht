@@ -163,7 +163,7 @@ class Dht {
 			if(tmp_count > 1) {
 //				clearInterval(tmp_handle_check);
 			}
-		}, 1000);
+		}, 200);
 	}
 	
 	findNode(target, nid) {
@@ -245,7 +245,7 @@ class Dht {
         const packet = bencode.encode(msg);
         const len = packet.length;
         
-        console.log(target);
+//        console.log(target);
         this.socket.send(packet, 0, len, port, address);
 	}
 	
