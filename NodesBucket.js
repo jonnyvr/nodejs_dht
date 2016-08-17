@@ -46,7 +46,7 @@ class NodesBucket {
 		
 		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {			
 			var tmp_dis = targetNode._nodeId ^ srcNode._nodeId;
-			
+			console.log(srcNode.length);
 //			console.log(targetNode._nodeId.toString());
 			console.log(srcNode._nodeId);
 			console.log(targetNode._nodeId);
@@ -202,7 +202,8 @@ class NodesBucket {
 		
 		var tmp_var = 0x01;
 		this._selfNode = new NodeUnit();
-		this._selfNode._nodeId = 1002;
+//		this._selfNode._nodeId = 0xd54033cd939d192a75ed7bc99e3dc1d0436e1dfa;
+		this._selfNode._nodeId = 0xd54033cd;
 		
 //		console.log(this._bucketIndex);
 		
@@ -216,11 +217,12 @@ class NodesBucket {
 		tmp_node2._nodeId = 422;
 		
 		var tmp_node3 = new NodeUnit();
-		tmp_node3._nodeId = 622;
+//		tmp_node3._nodeId = 0x07f29b9630707160328b053b1aa772e779a4714b;
+		tmp_node3._nodeId = 0x07f29b96;
 		
-		this.insertNewNode(tmp_node);
-		this.insertNewNode(tmp_node1);
-		this.insertNewNode(tmp_node2);
+//		this.insertNewNode(tmp_node);
+//		this.insertNewNode(tmp_node1);
+//		this.insertNewNode(tmp_node2);
 		this.insertNewNode(tmp_node3);
 //		console.log(this._data.count());
 //		console.log(this._data);

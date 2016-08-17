@@ -1,10 +1,11 @@
 //require('express');
 
 
-//var NodesBucket = require("./NodesBucket");
-//
-//var nodesBucket = new NodesBucket("bucket1", 3);
-//nodesBucket.test();
+var NodesBucket = require("./NodesBucket");
+
+var nodesBucket = new NodesBucket("bucket1", 3);
+nodesBucket.test();
+return;
 //
 ////var Testsok = require("./Testsok");
 ////var testsok = new Testsok();
