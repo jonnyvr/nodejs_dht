@@ -228,6 +228,8 @@ class Dht {
         const port = target.port;
         const packet = bencode.encode(msg);
         const len = packet.length;
+        
+        console.log(target);
         this.socket.send(packet, 0, len, port, address);
 	}
 	
