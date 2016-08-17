@@ -38,7 +38,7 @@ class Dht {
 	}
 	
 	onMessage(packet, rinfo, _self) {		
-		console.log("in onMessage");
+		console.log("in onMessage"+rinfo);
 		var t="";
 		var y="";	
 		var msg=null;
@@ -50,7 +50,10 @@ class Dht {
 			msg = null;
 		}
 		
+		console.log("[[[[[[[[[[[[[[[[");
 		console.log(msg);
+		console.log(rinfo);
+		console.log("]]]]]]]]]]]]]]]]");
 		
 		if(msg != null) {
 			if(msg.y) {
