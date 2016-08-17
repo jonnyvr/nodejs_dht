@@ -14,5 +14,11 @@ module.exports = {
     db: 'mongodb://localhost/dht',
     // request周期，越小越快，单位ms
     cycleTimes: 0
-
+    
+    dbinfo: {
+    	host:'localhost',
+    	user:'root',
+    	psw:'a123456b',
+    	db:'bts'
+    }
 }
