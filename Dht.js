@@ -50,6 +50,7 @@ class Dht {
 			msg = null;
 		}
 		
+		
 		if(msg != null) {
 			if(msg.y) {
 				y = msg.y.toString();
@@ -136,7 +137,8 @@ class Dht {
 	}
 	
 	findNodes(_self) {
-		setInterval(function() {			
+		var tmp_count = 0;
+		var tmp_handle_check = setInterval(function() {			
 			var tmp_node_unit = _self.data_router.getNodeToReq();
 			_self.data_router.showData();
 			if(tmp_node_unit != null) {
@@ -146,7 +148,11 @@ class Dht {
 					_self.findNode(tmp_node, _self.id);
 				}	
 			}
-						
+			
+			tmp_count ++;
+			if(tmp_count > 1) {
+				clearInterval(tmp_handle_check);
+			}
 		}, 10000);
 	}
 	
@@ -235,6 +241,7 @@ class Dht {
             return ;
         }
 
+        console.log(r);
         this.socket.send(packet, 0, len, port, address);
 	}
 	
