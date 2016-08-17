@@ -108,7 +108,7 @@ class NodesBucket {
 	insertNewNode(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
-			
+			console.log("tmp_dis: "+tmp_dis);
 			targetNode.refreshTime();
 			
 			if(!this._data.has(tmp_dis)) {
