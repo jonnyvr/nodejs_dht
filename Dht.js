@@ -17,7 +17,8 @@ class Dht {
 		this.port = "8004";
 		this.id = utils.randomId();
 		this.selfNode = new NodeUnit(this.id);
-		this.data_router = new NodesBucket(this.selfNode);
+//		this.data_router = new NodesBucket(this.selfNode);
+		this.data_router = [];
 		
 		//console.log(this.id);
 		//return ;
@@ -124,7 +125,8 @@ class Dht {
 				
 				var tmp_node_unit = new NodeUnit();
 				tmp_node_unit.setNode(tmp_node_new);
-				this.data_router.insertNewNode(tmp_node_unit);				
+//				this.data_router.insertNewNode(tmp_node_unit);				
+				this.data_router.push(tmp_node_unit);
 			}							
 		}
 		else {
@@ -148,9 +150,10 @@ class Dht {
 	findNodes(_self) {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
-			var tmp_node_unit = _self.data_router.getNodeToReq();
+//			var tmp_node_unit = _self.data_router.getNodeToReq();
+			var tmp_node_unit = _self.data_router.pop();
 			console.log(tmp_count);
-			_self.data_router.showData();
+//			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
@@ -210,7 +213,8 @@ class Dht {
 	}
 	
 	toFindNode(msg, rinfo) {		
-		var tmp_nodes_near = this.data_router.getNearNodes(this.id);
+//		var tmp_nodes_near = this.data_router.getNearNodes(this.id);
+		var tmp_nodes_near = '';
 		tmp_nodes_near = bencode.decode(tmp_nodes_near);
 		const r = {
 	            id: this.id,
@@ -224,7 +228,8 @@ class Dht {
 		var info_hash = msg.a.info_hash;
 		if(info_hash && info_hash.length == 20) {
 			//add to db
-			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
+//			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
+			var tmp_nodes_near = '';
 			tmp_nodes_near = bencode.decode(tmp_nodes_near);
 			const r = {
 //		            id: this.id,
