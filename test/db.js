@@ -39,7 +39,7 @@ class DB {
 					console.log("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())");
 				}
 				else {					
-//					tmp_conn.end();
+//					
 				}	
 			});
 		}
@@ -47,6 +47,12 @@ class DB {
 	}
 	
 	updateInfohashStatus(tmp_info_hash) {
+		var dbinfo = config.dbinfo;
+		this._conn = mysql.createConnection({
+			host: dbinfo.host, 
+			user: dbinfo.user,
+			password: dbinfo.psw
+		});
 		console.log("in updateInfohashStatus");
 		var _self = this._self;
 		if(tmp_info_hash != undefined) {
@@ -58,13 +64,20 @@ class DB {
 				}
 				else {
 					
-					tmp_conn.end();
+					
 				}	
 			});
 		}
+		this._conn.end();
 	}
 	
 	recordUnKnowPack(tmp_data) {
+		var dbinfo = config.dbinfo;
+		this._conn = mysql.createConnection({
+			host: dbinfo.host, 
+			user: dbinfo.user,
+			password: dbinfo.psw
+		});
 		console.log("in recordUnKnowPack");
 		if(tmp_data != undefined) {
 			var tmp_conn = this._conn;
@@ -78,6 +91,7 @@ class DB {
 				}	
 			});
 		}
+		this._conn.end();
 	}
 }
 
