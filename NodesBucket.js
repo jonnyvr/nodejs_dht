@@ -27,11 +27,21 @@ class NodesBucket {
 		}
 	}
 	
+	getTotalCount() {
+		var tmp_count = 0;
+		var tmp_vs = this._data.values();
+		
+		for(var i=0; i< tmp_vs.length; i++) {
+			tmp_count += tmp_vs[i].length;
+		}
+		return tmp_count;
+	}
+	
 	showData() {
 //		console.log(this._data.values());
 		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<");
 		var tmp_count_new = 0;
-		var tmp_count = this._data.count();
+		var tmp_count = 0;
 		console.log(tmp_count );
 		var tmp_vs = this._data.values();
 		
@@ -45,7 +55,7 @@ class NodesBucket {
 				}
 			}
 		}
-		console.log("total:"+ tmp_count + " |||| new :"+tmp_count_new);
+		console.log("total:"+this.getTotalCount() + " |||| new :"+tmp_count_new);
 //		console.log(this._data);
 //		console.log(tmp_vs);
 		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
