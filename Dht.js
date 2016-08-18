@@ -153,7 +153,7 @@ class Dht {
 //			var tmp_node_unit = _self.data_router.getNodeToReq();
 			var tmp_node_unit = null;
 			if(_self.data_router.length > 0) {
-				tmp_node_unit = _self.data_router.pop();	
+				tmp_node_unit = _self.data_router.shift();	
 			}			
 			console.log(tmp_count);
 			console.log("data_router count:"+_self.data_router.length);
