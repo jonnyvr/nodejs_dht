@@ -159,7 +159,11 @@ class Dht {
 					tmp_count ++;
 				}	
 			}
-			
+			else {
+				if(tmp_count > 0){
+					_self.joinDht(_self);
+				}
+			}
 			
 			if(tmp_count > 1) {
 //				clearInterval(tmp_handle_check);
