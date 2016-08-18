@@ -35,7 +35,7 @@ class DB {
 			this._conn.query("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())", function(err, rows, fields) {
 				if(err) {
 					
-					console.log("insert into ndt.info_hashs(info_hash, datafrom, upTime) values("+tmp_info_hash+",'"+tmp_from+"', now())");
+					console.log("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())");
 				}
 				else {					
 					tmp_conn.end();
