@@ -19,6 +19,6 @@ module.exports = {
     	host:'localhost',
     	user:'root',
     	psw:'a123456b',
-    	db:'bts'
+    	db:'ndt'
     }
 }

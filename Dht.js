@@ -11,7 +11,7 @@ var NodeUnit = require("./NodeUnit");
 
 
 class Dht {	
-	test() {		
+	init() {		
 		var _self = this;		
 		this.address = "104.207.153.197";
 		this.port = "8004";
@@ -69,10 +69,14 @@ class Dht {
 				if(y == 'r') {					
 					if(msg.r.token) {
 			            if(msg.r.values) {
-							
+//			            	var tmp_peers = utils.decodeNodes(msg.r.values);
+//							console.log("nodeS len"+nodes.length);						
+//							_self.insertNode(nodes);
 						}
 						else if(msg.r.nodes) {
-							
+							var nodes = utils.decodeNodes(msg.r.nodes);
+							console.log("nodeS len"+nodes.length);						
+							_self.insertNode(nodes);
 						}
 						else {
 							

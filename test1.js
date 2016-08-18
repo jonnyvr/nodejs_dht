@@ -18,15 +18,21 @@
 ////var Testsok = require("./Testsok");
 ////var testsok = new Testsok();
 ////testsok.test();
-//
-
-
 //return;
+
+
+var DB = require("./DB");
+
+var db = new DB();
+//db.recordUnKnowPack("oookkk");
+//db.recordInfohash("oookkk", "from1");
+db.recordInfohash("oookkk");
+return;
 
 var Dht = require("./Dht");
 var dht = new Dht();
-dht.test();
-console.log("ddddddddd");
+dht.init();
+
 
 return ;
 var http = require('http');
