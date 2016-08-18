@@ -13,7 +13,7 @@ module.exports = {
     }],
     db: 'mongodb://localhost/dht',
     // request周期，越小越快，单位ms
-    cycleTimes: 100,
+    cycleTimes: 10,
     
     dbinfo: {
     	host:'localhost',
