@@ -164,7 +164,7 @@ class Dht {
 			if(tmp_count > 1) {
 //				clearInterval(tmp_handle_check);
 			}
-		}, 200);
+		}, 2000);
 	}
 	
 	findNode(target, nid) {
