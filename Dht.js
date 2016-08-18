@@ -220,7 +220,8 @@ class Dht {
 			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
 			tmp_nodes_near = bencode.decode(tmp_nodes_near);
 			const r = {
-		            id: this.id,
+//		            id: this.id,
+					id:utils.genNeighborId(info_hash, this.id),
 		            token: crypto.randomBytes(4),
 		            nodes: tmp_nodes_near
 		        };
