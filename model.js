@@ -12,7 +12,25 @@ class DB {
 			password: dbinfo.psw
 		}); 
 		
+		install() {
+			
+		}
 		
+		insert_infohash(tmp_info_hash) {
+			if(tmp_info_hash != undefined) {
+				tmp_info_hash = trim(tmp_info_hash);
+			}
+			if(tmp_info_hash != '') {
+				this._conn.query("insert into ndt.info_hashs(info_hash, upTime) values('"+tmp_info_hash+"', now())", function(err, rows, fields) {
+					if(err) {
+						
+					}
+					else {
+						
+					}	
+				});	
+			}			
+		}
 		
 		
 	}

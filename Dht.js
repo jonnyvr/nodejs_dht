@@ -168,8 +168,8 @@ class Dht {
 	
 	findNode(target, nid) {
         //生成离目标节点较近的id		
-//    	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
-		const id = nid;
+    	const id = nid != undefined ? utils.genNeighborId(nid, this.id) : this.id;
+//		const id = nid;
 		if(id == undefined) {
 			id = this.id;
 		}

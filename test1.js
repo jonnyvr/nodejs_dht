@@ -1,5 +1,12 @@
 //require('express');
 
+//var tmp_buf = new Buffer(20);
+//
+//
+//tmp_buf.fill(0);
+//tmp_buf[3] = 0xdd;
+//console.log(tmp_buf);
+//return ;
 //console.log(144000000000000000<<16);
 //return ;
 //var NodesBucket = require("./NodesBucket");
