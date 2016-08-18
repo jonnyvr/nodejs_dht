@@ -32,7 +32,7 @@ class DB {
 		if(tmp_info_hash != undefined) {
 			
 			var tmp_conn = this._conn;
-			this._conn.query("insert into ndt.info_hashs(info_hash, datafrom, upTime) values("+tmp_info_hash+",'"+tmp_from+"', now())", function(err, rows, fields) {
+			this._conn.query("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())", function(err, rows, fields) {
 				if(err) {
 					
 					console.log("insert into ndt.info_hashs(info_hash, datafrom, upTime) values("+tmp_info_hash+",'"+tmp_from+"', now())");
