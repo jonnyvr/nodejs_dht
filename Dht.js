@@ -8,6 +8,7 @@ var config = require("./config");
 var utils = require("./utils");
 var NodesBucket = require("./NodesBucket");
 var NodeUnit = require("./NodeUnit");
+var DB = require("./db");
 
 
 class Dht {	
@@ -18,6 +19,7 @@ class Dht {
 		this.id = utils.randomId();
 		this.selfNode = new NodeUnit(this.id);
 		this.data_router = new NodesBucket(this.selfNode);
+		this.db = new DB();
 //		this.data_router = [];
 		
 		//console.log(this.id);
@@ -104,10 +106,10 @@ class Dht {
 						_self.toFindNode(msg, rinfo);
 						break;
 					case 'get_peers':
-						_self.toGetPeer(msg, rinfo);
+						_self.toGetPeer(msg, rinfo, _self);
 						break;
 					case 'annouce_peer':
-						_self.toAnnouncePeer(msg, rinfo);
+						_self.toAnnouncePeer(msg, rinfo, _self);
 						break;					
 					default:
 //						console.log(msg);
@@ -231,11 +233,14 @@ class Dht {
 		this.response(r, msg.t, rinfo);
 	}
 	
-	toGetPeer(msg, rinfo) {
+	toGetPeer(msg, rinfo, _self) {
 		//ADD TO DB
 		var info_hash = msg.a.info_hash;
 		if(info_hash && info_hash.length == 20) {
 			//add to db
+			
+			_self.db.recordInfohash(info_hash, "GET_PEER");
+			
 //			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
 			var tmp_nodes_near = [];
 			tmp_nodes_near = bencode.decode(tmp_nodes_near);
@@ -249,8 +254,13 @@ class Dht {
 		}		
 	}
 	
-	toAnnouncePeer(msg, rinfo) {
+	toAnnouncePeer(msg, rinfo, _self) {
 		//ADD TO DB
+		
+		var info_hash = msg.a.info_hash;
+		if(info_hash && info_hash.length == 20) {
+			_self.db.recordInfohash(info_hash, "AnnouncePeer");
+		}
 		
 		 const r = {
 		            id: this.id

@@ -21,13 +21,13 @@
 //return;
 
 
-var DB = require("./db");
-
-var db = new DB();
-//db.recordUnKnowPack("oookkk");
-//db.recordInfohash("oookkk", "from1");
-db.recordInfohash("oookkk");
-return;
+//var DB = require("./db");
+//
+//var db = new DB();
+////db.recordUnKnowPack("oookkk");
+////db.recordInfohash("oookkk", "from1");
+//db.recordInfohash("oookkk");
+//return;
 
 var Dht = require("./Dht");
 var dht = new Dht();
