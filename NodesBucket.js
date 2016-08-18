@@ -30,14 +30,22 @@ class NodesBucket {
 	showData() {
 //		console.log(this._data.values());
 		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<");
+		var tmp_count_new = 0;
 		var tmp_count = this._data.count();
 		console.log(tmp_count );
 		var tmp_vs = this._data.values();
 		
 		for(var i=0; i< tmp_vs.length; i++) {
 			tmp_count += tmp_vs[i].length;
+			
+			for(var j=0; j < tmp_vs[i].length; j++) {
+				var tmp_node_unit = tmp_vs[i][j];
+				if(!tmp_node_unit._hasRequest) {
+					tmp_count_new++;
+				}
+			}
 		}
-		console.log(tmp_count );
+		console.log("total:"+ tmp_count + " |||| new :"+tmp_count_new);
 		console.log(this._data);
 //		console.log(tmp_vs);
 		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
