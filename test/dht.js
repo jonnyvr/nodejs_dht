@@ -204,7 +204,7 @@ class Dht {
     toGetPeers(msg, rinfo) {
         if (msg.a && msg.a.info_hash && msg.a.info_hash.length === 20) {
             var infohash = msg.a.info_hash;
-            db.recordInfohash(infohash.toString(), "GET_PEER");
+            db.recordInfohash(infohash.toString('hex'), "GET_PEER");
         } else {
           return ;  
         } 
@@ -220,7 +220,7 @@ class Dht {
     //响应annoucePeer查询
     toAnnouncePeer(msg, rinfo) {
         if (msg.a && msg.a.info_hash && msg.a.info_hash.length === 20) {
-            db.recordInfohash(msg.a.info_hash.toString(), "ANNON");
+            db.recordInfohash(msg.a.info_hash.toString('hex'), "ANNON");
         } else {
             return ;
         }
