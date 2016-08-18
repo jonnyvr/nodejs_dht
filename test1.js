@@ -21,7 +21,7 @@
 //return;
 
 
-var DB = require("./DB");
+var DB = require("./db");
 
 var db = new DB();
 //db.recordUnKnowPack("oookkk");
