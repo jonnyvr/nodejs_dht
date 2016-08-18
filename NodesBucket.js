@@ -154,7 +154,7 @@ class NodesBucket {
 			else {
 //				console.log("in this2");
 				this._data.get(tmp_dis).push(targetNode);
-				if(tmp_hash_data.length > this._N) {
+				if(this._data.get(tmp_dis).length > this._N) {
 					this._data.get(tmp_dis).shift();	
 				}
 								
