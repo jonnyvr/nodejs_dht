@@ -22,16 +22,14 @@ class DB {
 	
 	recordInfohash(tmp_info_hash, tmp_from) {
 		var _self = this._self;
-		if(tmp_info_hash != undefined) {
-			tmp_info_hash = tmp_info_hash.trim();
-		}
 		if(tmp_from == undefined) {
 			tmp_from = "";
 		}
 		else {
 			tmp_from = tmp_from.trim();
 		}
-		if(tmp_info_hash != '') {
+		if(tmp_info_hash != undefined) {
+			
 			var tmp_conn = this._conn;
 			this._conn.query("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())", function(err, rows, fields) {
 				if(err) {
@@ -48,9 +46,7 @@ class DB {
 	updateInfohashStatus(tmp_info_hash) {
 		var _self = this._self;
 		if(tmp_info_hash != undefined) {
-			tmp_info_hash = tmp_info_hash.trim();
-		}
-		if(tmp_info_hash != '') {
+			
 			var tmp_conn = this._conn;
 			this._conn.query("update ndt.info_hashs set hasAnnouncePeer=1 where info_hash='"+tmp_info_hash+"'", function(err, rows, fields) {
 				if(err) {
@@ -65,7 +61,7 @@ class DB {
 	}
 	
 	recordUnKnowPack(tmp_data) {		
-		if(tmp_data.trim() != '') {
+		if(tmp_data != undefined) {
 			var tmp_conn = this._conn;
 			this._conn.query("insert into ndt.unresolve_pack(data, upTime) values('"+tmp_data+"', now())", function(err, rows, fields) {
 				if(err) {
