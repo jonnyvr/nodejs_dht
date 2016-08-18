@@ -3,10 +3,9 @@ var mysql = require("mysql");
 var config = require("./config");
 
 class DB {
-	constructor() {
-		var dbinfo = this._dbinfo;;
+	constructor() {		
 		this._self = this;
-		this._dbinfo = dbinfo;
+		
 		
 		
 		
@@ -17,7 +16,7 @@ class DB {
 	}
 	
 	recordInfohash(tmp_info_hash, tmp_from) {
-		var dbinfo = this._dbinfo;;
+		var dbinfo = config.dbinfo;
 		this._conn = mysql.createConnection({
 			host: dbinfo.host, 
 			user: dbinfo.user,
