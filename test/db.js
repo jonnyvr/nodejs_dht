@@ -4,7 +4,7 @@ var config = require("./config");
 
 class DB {
 	constructor() {
-		
+		var dbinfo = this._dbinfo;;
 		this._self = this;
 		this._dbinfo = dbinfo;
 		
