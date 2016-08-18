@@ -147,10 +147,12 @@ class NodesBucket {
 			targetNode.refreshTime();
 			
 			if(!this._data.has(tmp_dis)) {
+				console.log("in this1");
 				this._data.set(tmp_dis, []);
 				this._data.get(tmp_dis).push(targetNode);
 			}
 			else {
+				console.log("in this2");
 				this._data.get(tmp_dis).push(targetNode);				
 				this._data.get(tmp_dis).shift();				
 			}			
