@@ -151,8 +151,12 @@ class Dht {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
 //			var tmp_node_unit = _self.data_router.getNodeToReq();
-			var tmp_node_unit = _self.data_router.pop();
+			var tmp_node_unit = null;
+			if(_self.data_router.length > 0) {
+				tmp_node_unit = _self.data_router.pop();	
+			}			
 			console.log(tmp_count);
+			console.log("data_router count:"+_self.data_router.length);
 //			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
@@ -174,7 +178,7 @@ class Dht {
 			if(tmp_count > 1) {
 //				clearInterval(tmp_handle_check);
 			}
-		}, 2000);
+		}, 200);
 	}
 	
 	findNode(target, nid) {
