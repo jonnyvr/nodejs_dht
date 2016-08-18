@@ -143,18 +143,21 @@ class NodesBucket {
 	insertNewNode(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
-			console.log("tmp_dis: "+tmp_dis);
+//			console.log("tmp_dis: "+tmp_dis);
 			targetNode.refreshTime();
 			
 			if(!this._data.has(tmp_dis)) {
-				console.log("in this1");
+//				console.log("in this1");
 				this._data.set(tmp_dis, []);
 				this._data.get(tmp_dis).push(targetNode);
 			}
 			else {
-				console.log("in this2");
-				this._data.get(tmp_dis).push(targetNode);				
-				this._data.get(tmp_dis).shift();				
+//				console.log("in this2");
+				this._data.get(tmp_dis).push(targetNode);
+				if(tmp_hash_data.length > this._N) {
+					this._data.get(tmp_dis).shift();	
+				}
+								
 			}			
 		}
 	}
