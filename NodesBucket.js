@@ -9,7 +9,7 @@ class NodesBucket {
 		this._selfNode = selfNode;
 		this._bucketIndex = [];		
 		
-		var tmp_N = 8;
+		var tmp_N = 20;
 		if(typeof(N) != 'number') {
 			this._N = tmp_N;
 		}
@@ -130,8 +130,24 @@ class NodesBucket {
 		return tmp_nodes_rtn;
 	}
 	
-	
 	insertNewNode(targetNode) {
+		if(targetNode != null && targetNode._nodeId != undefined) {
+			var tmp_dis = this.calDis(this._selfNode, targetNode)
+//			console.log("tmp_dis: "+tmp_dis);
+			targetNode.refreshTime();
+			
+			if(!this._data.has(tmp_dis)) {
+				this._data.set(tmp_dis, []);
+				this._data.get(tmp_dis).push(targetNode);
+			}
+			else {
+				this._data.get(tmp_dis).push(targetNode);				
+				this._data.get(tmp_dis).shift();				
+			}			
+		}
+	}
+	
+	insertNewNode_bak(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
 //			console.log("tmp_dis: "+tmp_dis);
@@ -180,6 +196,24 @@ class NodesBucket {
 	}
 	
 	getNodeToReq() {
+		var tmp_node_rtn = null;
+		var tmp_keys = this._data.keys(); 
+		if(tmp_keys.length > 0) {
+			for(var j=0; j <tmp_keys.length;j++ ) {
+				var tmp_nodes = this._data.get(tmp_keys[j]);
+				if(tmp_nodes != undefined && tmp_nodes.length != undefined && tmp_nodes.length > 0) {
+					var tmp_node = tmp_nodes.shift();
+					if(tmp_node._nodeId != undefined) {						
+						tmp_node_rtn = tmp_node;
+						break;						
+					}
+				}
+			}
+		} 
+		return tmp_node_rtn;
+	}
+	
+	getNodeToReq_bak() {
 		var tmp_node_rtn = null;
 		if(this._data.count() > 0) {
 			var tmp_vs = this._data.values();		
