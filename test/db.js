@@ -21,6 +21,7 @@ class DB {
 	}
 	
 	recordInfohash(tmp_info_hash, tmp_from) {
+		console.log("in recordInfohash");
 		var _self = this._self;
 		if(tmp_from == undefined) {
 			tmp_from = "";
@@ -44,6 +45,7 @@ class DB {
 	}
 	
 	updateInfohashStatus(tmp_info_hash) {
+		console.log("in updateInfohashStatus");
 		var _self = this._self;
 		if(tmp_info_hash != undefined) {
 			
@@ -60,7 +62,8 @@ class DB {
 		}
 	}
 	
-	recordUnKnowPack(tmp_data) {		
+	recordUnKnowPack(tmp_data) {
+		console.log("in recordUnKnowPack");
 		if(tmp_data != undefined) {
 			var tmp_conn = this._conn;
 			this._conn.query("insert into ndt.unresolve_pack(data, upTime) values('"+tmp_data+"', now())", function(err, rows, fields) {
