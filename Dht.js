@@ -17,8 +17,8 @@ class Dht {
 		this.port = "8004";
 		this.id = utils.randomId();
 		this.selfNode = new NodeUnit(this.id);
-//		this.data_router = new NodesBucket(this.selfNode);
-		this.data_router = [];
+		this.data_router = new NodesBucket(this.selfNode);
+//		this.data_router = [];
 		
 		//console.log(this.id);
 		//return ;
@@ -125,8 +125,8 @@ class Dht {
 				
 				var tmp_node_unit = new NodeUnit();
 				tmp_node_unit.setNode(tmp_node_new);
-//				this.data_router.insertNewNode(tmp_node_unit);				
-				this.data_router.push(tmp_node_unit);
+				this.data_router.insertNewNode(tmp_node_unit);				
+//				this.data_router.push(tmp_node_unit);
 			}							
 		}
 		else {
@@ -150,13 +150,13 @@ class Dht {
 	findNodes(_self) {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
-//			var tmp_node_unit = _self.data_router.getNodeToReq();
-			var tmp_node_unit = null;
-			if(_self.data_router.length > 0) {
-				tmp_node_unit = _self.data_router.shift();	
-			}			
+			var tmp_node_unit = _self.data_router.getNodeToReq();
+//			var tmp_node_unit = null;
+//			if(_self.data_router.length > 0) {
+//				tmp_node_unit = _self.data_router.shift();	
+//			}			
 			console.log(tmp_count);
-			console.log("data_router count:"+_self.data_router.length);
+//			console.log("data_router count:"+_self.data_router.length);
 //			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
