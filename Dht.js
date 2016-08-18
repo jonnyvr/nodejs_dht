@@ -269,9 +269,9 @@ class Dht {
 	
 	 response(r, t, rinfo) {
         const packet = bencode.encode({
-            t,
-            r,
-            y: 'r'
+            t:t,
+            r:r,
+            y:'r'
         });
         const len = packet.length;
         const address = rinfo.address;
