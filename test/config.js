@@ -1,5 +1,6 @@
 module.exports = {
-    address: '104.207.153.197',
+//    address: '104.207.153.197',
+		address: '0.0.0.0',
     port: 2555,
     superNodes: [{
     	address: 'router.utorrent.com',
