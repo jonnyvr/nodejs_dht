@@ -140,7 +140,7 @@ class NodesBucket {
 		return tmp_nodes_rtn;
 	}
 	
-	insertNewNode(targetNode) {
+	insertNewNode_bak(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
 //			console.log("tmp_dis: "+tmp_dis);
@@ -162,7 +162,7 @@ class NodesBucket {
 		}
 	}
 	
-	insertNewNode_bak(targetNode) {
+	insertNewNode(targetNode) {
 		if(targetNode != null && targetNode._nodeId != undefined) {
 			var tmp_dis = this.calDis(this._selfNode, targetNode)
 //			console.log("tmp_dis: "+tmp_dis);
@@ -197,7 +197,7 @@ class NodesBucket {
 					}
 					else {
 						if(tmp_node_hasin_index >= 0) {
-							
+							//slice push
 							
 						}
 					}
