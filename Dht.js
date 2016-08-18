@@ -161,6 +161,7 @@ class Dht {
 			}
 			else {
 				if(tmp_count > 0){
+					console.log("joindht again");
 					_self.joinDht(_self);
 				}
 			}
