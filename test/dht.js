@@ -115,7 +115,8 @@ class Dht {
         }
         
         if (y === 'e') {
-            return console.log('can not process e!');
+        	db.recordUnKnowPack(msg);
+            return console.log('can not process e!');            
         }
         
         if (y === 'q') {
