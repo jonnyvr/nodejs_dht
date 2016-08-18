@@ -218,7 +218,7 @@ class Dht {
 	
 	toFindNode(msg, rinfo) {		
 //		var tmp_nodes_near = this.data_router.getNearNodes(this.id);
-		var tmp_nodes_near = '';
+		var tmp_nodes_near = [];
 		tmp_nodes_near = bencode.decode(tmp_nodes_near);
 		const r = {
 	            id: this.id,
@@ -233,7 +233,7 @@ class Dht {
 		if(info_hash && info_hash.length == 20) {
 			//add to db
 //			var tmp_nodes_near = this.data_router.getNearNodes(info_hash);
-			var tmp_nodes_near = '';
+			var tmp_nodes_near = [];
 			tmp_nodes_near = bencode.decode(tmp_nodes_near);
 			const r = {
 //		            id: this.id,
