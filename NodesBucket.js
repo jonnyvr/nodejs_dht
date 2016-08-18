@@ -46,7 +46,7 @@ class NodesBucket {
 			}
 		}
 		console.log("total:"+ tmp_count + " |||| new :"+tmp_count_new);
-		console.log(this._data);
+//		console.log(this._data);
 //		console.log(tmp_vs);
 		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
