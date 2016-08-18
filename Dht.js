@@ -84,12 +84,13 @@ class Dht {
 						
 					}
 					else {
-//						console.log(msg);
+						console.log(msg);
 					}
-					console.log(msg);
+//					console.log(msg);
 				}
 				else if(y == 'q' ) {
-					var q = msg.q.toString();					
+					var q = msg.q.toString();	
+					console.log(msg);
 					switch(q) {
 					case 'ping':
 						_self.toPing(msg, rinfo);
@@ -105,8 +106,7 @@ class Dht {
 						break;					
 					default:
 //						console.log(msg);
-					}
-					console.log(msg);
+					}					
 				}
 				else {	
 					console.log(msg);
