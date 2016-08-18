@@ -87,7 +87,7 @@ class DB {
 				}
 				else {
 					
-					tmp_conn.end();
+					
 				}	
 			});
 		}
