@@ -1,6 +1,6 @@
 module.exports = {
-//    address: '104.207.153.197',
-		address: '0.0.0.0',
+    address: '104.207.153.197',
+//		address: '0.0.0.0',
     port: 2555,
     superNodes: [{
     	address: 'router.utorrent.com',
@@ -14,7 +14,7 @@ module.exports = {
     }],
     db: 'mongodb://localhost/dht',
     // request周期，越小越快，单位ms
-    cycleTimes: 10,
+    cycleTimes: 0,
     
     dbinfo: {
     	host:'localhost',
