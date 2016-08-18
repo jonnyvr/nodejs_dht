@@ -181,8 +181,8 @@ class Dht {
             q: 'find_node',
             a: {
                 id:id,
-                //target: utils.randomId()
-                target:id
+                target: utils.randomId()
+//                target:id
             }
     	};
     	

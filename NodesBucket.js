@@ -47,7 +47,7 @@ class NodesBucket {
 		var tmp_dis_rtn = -1;
 		
 		if(targetNode != null && targetNode._nodeId != undefined && srcNode != null && srcNode._nodeId != undefined) {
-			if(targetNode._nodeId.length != undefined && srcNode._nodeId.length != undefined && srcNode._nodeId.length == 20) {
+			if(targetNode._nodeId.length != undefined && srcNode._nodeId.length == targetNode._nodeId.length && srcNode._nodeId.length == 20) {
 				var tmp_dis_arr = [];
 				for(var i=0; i < 20; i++) {
 					tmp_dis_arr.push(targetNode._nodeId[i] ^ srcNode._nodeId[i]);
@@ -57,6 +57,7 @@ class NodesBucket {
 					tmp_dis += tmp_dis_arr[i] * Math.pow(2, (19-i)*8);
 				}
 				
+				
 //				console.log(this._data);
 //				console.log(this._bucketIndex);
 //				console.log(srcNode._nodeId);
@@ -64,6 +65,7 @@ class NodesBucket {
 //				console.log(tmp_dis_arr);
 				
 //				console.log("tmp_dis"+tmp_dis+ "_");
+				
 				
 				for(var i=0; i < this._bucketIndex.length; i ++) {
 					var tmp_find = false;
