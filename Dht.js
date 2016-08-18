@@ -84,8 +84,9 @@ class Dht {
 						
 					}
 					else {
-						console.log(msg);
+//						console.log(msg);
 					}
+					console.log(msg);
 				}
 				else if(y == 'q' ) {
 					var q = msg.q.toString();					

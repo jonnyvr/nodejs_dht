@@ -38,7 +38,7 @@ class NodesBucket {
 			tmp_count += tmp_vs[i].length;
 		}
 		console.log(tmp_count );
-		console.log(this._data);
+//		console.log(this._data);
 //		console.log(tmp_vs);
 		console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>");
 	}
