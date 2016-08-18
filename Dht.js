@@ -77,7 +77,7 @@ class Dht {
 						}
 						else if(msg.r.nodes) {
 							var nodes = utils.decodeNodes(msg.r.nodes);
-							console.log("nodeS len"+nodes.length);						
+							console.log("nodeS1 len"+nodes.length);						
 							_self.insertNode(nodes);
 						}
 						else {
@@ -86,7 +86,7 @@ class Dht {
 					}
 					else if(msg.r.nodes) {						
 						var nodes = utils.decodeNodes(msg.r.nodes);
-						console.log("nodeS len"+nodes.length);						
+						console.log("nodeS2 len"+nodes.length);						
 						_self.insertNode(nodes);
 						
 					}
@@ -124,9 +124,9 @@ class Dht {
 	
 	insertNode(nodes) {
 		if(nodes.length > 0) {
-//			console.log("in for1");
+			console.log("in for1");
 			for(var j=0; j < nodes.length; j++) {
-//				console.log("in for2");
+				console.log("in for2");
 				var tmp_node_new = nodes[j];
 				
 				var tmp_node_unit = new NodeUnit();
