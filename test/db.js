@@ -7,11 +7,7 @@ class DB {
 		var dbinfo = config.dbinfo;;
 		this._self = this;
 		this._dbinfo = dbinfo;
-		this._conn = mysql.createConnection({
-			host: dbinfo.host, 
-			user: dbinfo.user,
-			password: dbinfo.psw
-		});
+		
 		
 		
 	}
@@ -21,6 +17,11 @@ class DB {
 	}
 	
 	recordInfohash(tmp_info_hash, tmp_from) {
+		this._conn = mysql.createConnection({
+			host: dbinfo.host, 
+			user: dbinfo.user,
+			password: dbinfo.psw
+		});
 		console.log("in recordInfohash");
 		var _self = this._self;
 		if(tmp_from == undefined) {
@@ -38,10 +39,11 @@ class DB {
 					console.log("insert into ndt.info_hashs(info_hash, datafrom, upTime) values('"+tmp_info_hash+"','"+tmp_from+"', now())");
 				}
 				else {					
-					tmp_conn.end();
+//					tmp_conn.end();
 				}	
 			});
 		}
+		this._conn.end();
 	}
 	
 	updateInfohashStatus(tmp_info_hash) {
