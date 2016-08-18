@@ -9,7 +9,7 @@ class NodesBucket {
 		this._selfNode = selfNode;
 		this._bucketIndex = [];		
 		
-		var tmp_N = 20;
+		var tmp_N = 8;
 		if(typeof(N) != 'number') {
 			this._N = tmp_N;
 		}

@@ -157,7 +157,7 @@ class Dht {
 //			}			
 			console.log(tmp_count);
 //			console.log("data_router count:"+_self.data_router.length);
-//			_self.data_router.showData();
+			_self.data_router.showData();
 			if(tmp_node_unit != null) {
 				var tmp_node = tmp_node_unit.getNode();
 				if(tmp_node != null && tmp_node.nid != undefined) {
