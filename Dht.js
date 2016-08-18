@@ -175,7 +175,7 @@ class Dht {
 			}
 			else {
 				var total_count = _self.data_router.getTotalCount();
-				if(total_count == 0) {
+				if(total_count == 0 && tmp_count > 0) {
 					tmp_count++;
 					console.log("joindht again");
 					_self.joinDht(_self);
