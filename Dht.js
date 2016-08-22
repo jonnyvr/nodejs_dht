@@ -61,64 +61,69 @@ class Dht {
 //		console.log("]]]]]]]]]]]]]]]]");
 		
 		if(msg != null) {
-			if(msg.y) {
-				y = msg.y.toString();
-			}
-			if(msg.t) {
-				t= msg.t.toString();
-			}
-			if(y != '' && t != '') {		
-				if(y == 'r') {					
-					if(msg.r.token) {
-			            if(msg.r.values) {
-//			            	var tmp_peers = utils.decodeNodes(msg.r.values);
-//							console.log("nodeS len"+nodes.length);						
-//							_self.insertNode(nodes);
+			try {
+				if(msg.y) {
+					y = msg.y.toString();
+				}
+				if(msg.t) {
+					t= msg.t.toString();
+				}
+				if(y != '' && t != '') {		
+					if(y == 'r') {					
+						if(msg.r.token) {
+							if(msg.r.values) {
+	//			            	var tmp_peers = utils.decodeNodes(msg.r.values);
+	//							console.log("nodeS len"+nodes.length);						
+	//							_self.insertNode(nodes);
+							}
+							else if(msg.r.nodes) {
+								var nodes = utils.decodeNodes(msg.r.nodes);
+								console.log("nodeS1 len"+nodes.length);						
+								_self.insertNode(nodes);
+							}
+							else {
+								
+							}
 						}
-						else if(msg.r.nodes) {
+						else if(msg.r.nodes) {						
 							var nodes = utils.decodeNodes(msg.r.nodes);
-							console.log("nodeS1 len"+nodes.length);						
+							console.log("nodeS2 len"+nodes.length);						
 							_self.insertNode(nodes);
-						}
-						else {
 							
 						}
+						else {
+							console.log(msg);
+						}
+	//					console.log(msg);
 					}
-					else if(msg.r.nodes) {						
-						var nodes = utils.decodeNodes(msg.r.nodes);
-						console.log("nodeS2 len"+nodes.length);						
-						_self.insertNode(nodes);
-						
+					else if(y == 'q' ) {
+						var q = msg.q.toString();	
+						console.log(msg);
+						switch(q) {
+						case 'ping':
+							_self.toPing(msg, rinfo);
+							break;
+						case 'find_node':
+							_self.toFindNode(msg, rinfo);
+							break;
+						case 'get_peers':
+							_self.toGetPeer(msg, rinfo, _self);
+							break;
+						case 'annouce_peer':
+							_self.toAnnouncePeer(msg, rinfo, _self);
+							break;					
+						default:
+	//						console.log(msg);
+						}					
 					}
-					else {
+					else {	
 						console.log(msg);
 					}
-//					console.log(msg);
 				}
-				else if(y == 'q' ) {
-					var q = msg.q.toString();	
-					console.log(msg);
-					switch(q) {
-					case 'ping':
-						_self.toPing(msg, rinfo);
-						break;
-					case 'find_node':
-						_self.toFindNode(msg, rinfo);
-						break;
-					case 'get_peers':
-						_self.toGetPeer(msg, rinfo, _self);
-						break;
-					case 'annouce_peer':
-						_self.toAnnouncePeer(msg, rinfo, _self);
-						break;					
-					default:
-//						console.log(msg);
-					}					
-				}
-				else {	
-					console.log(msg);
-				}
+			}catch(ee) {
+				
 			}
+			
 		}
 	}	
 	
@@ -156,35 +161,39 @@ class Dht {
 	findNodes(_self) {
 		var tmp_count = 0;
 		var tmp_handle_check = setInterval(function() {			
-			var tmp_node_unit = _self.data_router.getNodeToReq();
-//			var tmp_node_unit = null;
-//			if(_self.data_router.length > 0) {
-//				tmp_node_unit = _self.data_router.shift();	
-//			}			
-			console.log(tmp_count);
-//			console.log("data_router count:"+_self.data_router.length);
-			_self.data_router.showData();
-			if(tmp_node_unit != null) {
-				var tmp_node = tmp_node_unit.getNode();
-				if(tmp_node != null && tmp_node.nid != undefined) {
-//					console.log(tmp_node);
-					_self.findNode(tmp_node, _self.id);
-					
-					tmp_count =1;
-				}	
-			}
-			else {
-				var total_count = _self.data_router.getTotalCount();
-				if(total_count == 0 && tmp_count > 0) {
-					tmp_count++;
-					console.log("joindht again");
-					_self.joinDht(_self);
+			try {
+				var tmp_node_unit = _self.data_router.getNodeToReq();
+	//			var tmp_node_unit = null;
+	//			if(_self.data_router.length > 0) {
+	//				tmp_node_unit = _self.data_router.shift();	
+	//			}			
+				console.log(tmp_count);
+	//			console.log("data_router count:"+_self.data_router.length);
+				_self.data_router.showData();
+				if(tmp_node_unit != null) {
+					var tmp_node = tmp_node_unit.getNode();
+					if(tmp_node != null && tmp_node.nid != undefined) {
+	//					console.log(tmp_node);
+						_self.findNode(tmp_node, _self.id);
+						
+						tmp_count =1;
+					}	
 				}
-			}
-			
-			if(tmp_count > 1) {
-//				clearInterval(tmp_handle_check);
-			}
+				else {
+					var total_count = _self.data_router.getTotalCount();
+					if(total_count == 0 && tmp_count > 0) {
+						tmp_count++;
+						console.log("joindht again");
+						_self.joinDht(_self);
+					}
+				}
+				
+				if(tmp_count > 1) {
+	//				clearInterval(tmp_handle_check);
+				}
+			}catch(eee) {
+				
+			}			
 		}, 200);
 	}
 	
