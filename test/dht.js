@@ -66,29 +66,37 @@ class Dht {
     
     //请求
     request(msg, target) {
-        const address = target.address;
-        const port = target.port;
-        const packet = bencode.encode(msg);
-        const len = packet.length;
-        this.socket.send(packet, 0, len, port, address);
+		try {
+			const address = target.address;
+			const port = target.port;
+			const packet = bencode.encode(msg);
+			const len = packet.length;
+			this.socket.send(packet, 0, len, port, address);	
+		}catch(ee) {
+			
+		}        
     }
     
     //响应
-    response(r, t, rinfo) {
-        const packet = bencode.encode({
-            t,
-            r,
-            y: 'r'
-        });
-        const len = packet.length;
-        const address = rinfo.address;
-        const port = rinfo.port;
-        if (port < 1 || port > 65535) {
-            console.log('port is invalid');
-            return ;
-        }
+    response(r, t, rinfo) {		
+		try {
+			const packet = bencode.encode({
+				t,
+				r,
+				y: 'r'
+			});
+			const len = packet.length;
+			const address = rinfo.address;
+			const port = rinfo.port;
+			if (port < 1 || port > 65535) {
+				console.log('port is invalid');
+				return ;
+			}
 
-        this.socket.send(packet, 0, len, port, address);
+			this.socket.send(packet, 0, len, port, address);
+		}catch(ee) {
+			
+		}        
     }
     
     //处理消息(request消息和response消息)
